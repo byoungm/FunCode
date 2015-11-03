@@ -8,6 +8,8 @@
 #define TRUE 1
 #define FALSE 0
 
+#define NumElements(x) (sizeof(x) / sizeof(*x))
+
 typedef struct
 {
     int found;
@@ -22,20 +24,6 @@ void fill_water(int *water, water_wall_t lw, water_wall_t rw)
     }
 }
 
-void graph_lanscape(int *lanscape, int length)
-{
-    for(int i=0;i<length;i++)
-    {
-        printf("|");
-        for(int j=0;j<lanscape[i];j++)
-        {
-            printf("= ");
-        }
-        printf("\n");       
-    }   
-    printf("\n");
-}
-
 int find_max_lanscape_height(int *lanscape, int length)
 {
     int max = 0;
@@ -46,8 +34,34 @@ int find_max_lanscape_height(int *lanscape, int length)
             max = lanscape[i];
         }
     }
-
     return max;
+}
+
+void graph_lanscape(int *lanscape, int length)
+{
+    int max_lanscape_height = find_max_lanscape_height(lanscape, length);
+    char c = 0;
+    for (int curr_height = max_lanscape_height; curr_height > 0; curr_height--)
+    {
+        for (int i = 0; i < length; i++)  
+        {
+            if (lanscape[i] >= curr_height)
+            {
+                printf("# ");
+            }
+            else
+            {
+                 printf("  ");
+            }
+        }
+        printf("\n");    
+    }   
+
+    for (int i = 0; i < length*2; i++) 
+    {
+        printf("-");
+    }
+    printf("\n"); 
 }
 
 int backwater(int *lanscape, int lanscape_length)
@@ -102,17 +116,25 @@ int backwater(int *lanscape, int lanscape_length)
         if (i < lanscape_length - 1) printf("%i,",water[i]);
         else printf("%i}\n",water[i]);
     }
-    
+    printf("\n");
     return 0;
 }
 
 int main(int argc, const char * argv[])
 {
-    int a0[9] = {2,1,6,4,5,3,1,2,1}; backwater(a0,9);
-
-    int a1[9] = {0,1,1,5,1,4,2,3,4}; backwater( a1 ,9);
-
-    int a2[9] = {6,2,3,1,4,7,2,3,4}; backwater( a2 ,9);
+    int testCases[10][10] = 
+    {
+        {2,1,6,4,5,3,1,2,1},
+        {0,1,1,5,1,4,2,3,4},
+        {6,2,3,1,4,7,2,3,4},
+        {0},
+        {0,5,5,5,6,7,8,7,6},
+    };
+    int numTestCases = NumElements(testCases);
+    for (int i = 0; i < numTestCases; i++)
+    {
+        backwater(testCases[i], NumElements(testCases[i]));
+    }
 
     return 0;
 }
