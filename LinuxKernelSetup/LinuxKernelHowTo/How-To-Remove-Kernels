@@ -1,0 +1,7 @@
+# To Remvoe Kernels
+
+Remove /lib/modules/ KernelName
+Remove /boot/ *KernelName
+
+Remake Grub Boot Menu
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg

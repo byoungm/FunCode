@@ -1,0 +1,5 @@
+# To Build Linus Kernel and Install
+
+1. Copy config file from main kernel /boot/config-`uname -r` to build direcotry as ".config"
+2. build kernel using "make -jX" - Where X is the number of threads (use 2-4)
+3. Install Kernel using "sudo make modules_install install"

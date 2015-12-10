@@ -1,0 +1,9 @@
+
+Signed-off-by: Benjamin Young <youngcdev@gmail.com>
+
+# Format Patch
+
+git format-patch -o (/path/to/save/) -1 # the -1 is first commit -2 would be second commit
+
+# Send with mutt
+mutt -s ([PATCH] some title) -c (cc address) (to address) < (Patch)
