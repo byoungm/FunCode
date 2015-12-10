@@ -37,10 +37,9 @@ int find_max_lanscape_height(int *lanscape, int length)
     return max;
 }
 
-void graph_lanscape(int *lanscape, int length)
+void graph_lanscape_plus_water(int *lanscape, int length)
 {
     int max_lanscape_height = find_max_lanscape_height(lanscape, length);
-    char c = 0;
     for (int curr_height = max_lanscape_height; curr_height > 0; curr_height--)
     {
         for (int i = 0; i < length; i++)  
@@ -48,6 +47,10 @@ void graph_lanscape(int *lanscape, int length)
             if (lanscape[i] >= curr_height)
             {
                 printf("# ");
+            }
+            else if (lanscape[i] >= curr_height)
+            {
+                printf("W ");
             }
             else
             {
