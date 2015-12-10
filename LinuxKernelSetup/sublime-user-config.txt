@@ -1,0 +1,15 @@
+{
+	"auto_complete_commit_on_tab": true,
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"default_line_ending": "unix",
+	"font_size": 10,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"tab_size": 8,
+	"translate_tabs_to_spaces": false
+}
+
+# Packages to download
+# Trailing Spaces
