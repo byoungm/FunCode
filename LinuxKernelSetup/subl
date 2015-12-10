@@ -1,0 +1,7 @@
+#!/bin/sh
+subl_path=/usr/local/sublime_text_3/sublime_text
+if [ "${1}" == "-help" ]; then
+	$subl_path "${1}"
+else
+	$subl_path $@ > /dev/null 2>&1 &
+fi
