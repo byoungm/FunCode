@@ -37,7 +37,7 @@ int find_max_lanscape_height(int *lanscape, int length)
     return max;
 }
 
-void graph_lanscape_plus_water(int *lanscape, int length)
+void graph_lanscape_plus_water(int *lanscape, int *water, int length)
 {
     int max_lanscape_height = find_max_lanscape_height(lanscape, length);
     for (int curr_height = max_lanscape_height; curr_height > 0; curr_height--)
@@ -48,13 +48,13 @@ void graph_lanscape_plus_water(int *lanscape, int length)
             {
                 printf("# ");
             }
-            else if (lanscape[i] >= curr_height)
+            else if ((lanscape[i] + water[i]) >= curr_height)
             {
                 printf("W ");
             }
             else
             {
-                 printf("  ");
+                printf("  ");
             }
         }
         printf("\n");    
@@ -111,15 +111,24 @@ int backwater(int *lanscape, int lanscape_length)
     }
     
 
-    graph_lanscape(lanscape,lanscape_length);    
+    graph_lanscape_plus_water(lanscape, water, lanscape_length);    
 
     // Print Water
     printf("water = {");
-    for (int i=0; i < lanscape_length; i++) {
-        if (i < lanscape_length - 1) printf("%i,",water[i]);
-        else printf("%i}\n",water[i]);
+    for (int i=0; i < lanscape_length; i++) 
+    {
+        if (i < lanscape_length - 1)
+        {
+            printf("%i,",water[i]);
+        }
+        else
+        {
+            printf("%i}\n",water[i]);
+        }
     }
     printf("\n");
+
+    free(water);
     return 0;
 }
 
@@ -141,4 +150,3 @@ int main(int argc, const char * argv[])
 
     return 0;
 }
-
