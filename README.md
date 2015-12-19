@@ -1,5 +1,4 @@
-# Other
+# Fun Test Code
 
-Used to hold random pieces of code which are a project of study for possible future implementation.
-
-
+My code which has not found a home in another repository.
+Mainly some linux kernel setup scripts and Pic Test Code.
