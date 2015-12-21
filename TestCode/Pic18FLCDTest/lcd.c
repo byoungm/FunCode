@@ -22,7 +22,6 @@
 // Private Function Protypes
 void lcd_sendCommandPulseInUS(UINT16 pulseWidthInUS);
 void lcd_delayInUS(UINT16 time);
-void lcd_displayOn();
 void lcd_putCharacter(char c);
 void lcd_setAddr(UINT16);
 void lcd_putCharAtAddr(char c, UINT16 addr);

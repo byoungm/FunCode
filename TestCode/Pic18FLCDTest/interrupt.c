@@ -9,7 +9,7 @@ void intrp_CheckInterrupt()
 void intrp_InterruptHappened ()
 {   
     _asm
-    GOTO checkInterrupt
-    _endasm
+    GOTO intrp_CheckInterrupt
+     _endasm
     //not enought space in memory
 }
