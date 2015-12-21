@@ -4,6 +4,7 @@
 #define E  PORTEbits.RE0
 #define RW PORTEbits.RE1
 #define RS PORTEbits.RE2
+#define LCD_DATA_PORT PORTD
 
 // Functions pg.24
 // 
@@ -45,7 +46,7 @@ void lcd_clearDisplay()
 {
     RS = 0;
     RW = 0;
-    PORTD = 0x01;
+    LCD_DATA_PORT = 0x01;
     lcd_sendCommandPulseInUS(15000);
 }
 
@@ -67,20 +68,18 @@ void lcd_initDisplay()
     
     RS = 0;
     RW = 0;
-    PORTD = 0x38;//make 38 for two lines
+    LCD_DATA_PORT = 0x38;//make 38 for two lines
     lcd_sendCommandPulseInUS(2000);
     lcd_displayOn();
     lcd_clearDisplay();
 
 }
 
-
-
 void lcd_displayOff()
 {
     RS = 0;
     RW = 0;
-    PORTD = 0x08;//display off, cursor off, blinking off, DC
+    LCD_DATA_PORT = 0x08;//display off, cursor off, blinking off, DC
     lcd_sendCommandPulseInUS(40);
 }
 
@@ -88,14 +87,14 @@ void lcd_displayOn()
 {
     RS = 0;
     RW = 0;
-    PORTD = 0x0C;//display on, cursor off, blinking off, DC
+    LCD_DATA_PORT = 0x0C;//display on, cursor off, blinking off, DC
     lcd_sendCommandPulseInUS(40);
 }
 
 void lcd_setAddr(UINT16 addr){
     RS = 0;
     RW = 0;
-    PORTD = 0x80 | (0x7F & addr);
+    LCD_DATA_PORT = 0x80 | (0x7F & addr);
     lcd_sendCommandPulseInUS(40);
 }
 
@@ -103,7 +102,7 @@ void lcd_putCharacter(char c){
     
     RS = 1;  //data mode
     RW = 0;  //write
-    PORTD = 0xFF & c;
+    LCD_DATA_PORT = 0xFF & c;
     lcd_sendCommandPulseInUS(40);
 }
 
@@ -137,11 +136,9 @@ void lcd_writeLine(char *text, UINT8 lineNumber)
     }
 }
 
-
 void lcd_putCharAtAddr(char c, UINT16 addr)
 {
     lcd_setAddr( addr );
     lcd_putCharacter( c );
-
 }
 
