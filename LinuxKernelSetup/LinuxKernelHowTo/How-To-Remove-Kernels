@@ -5,3 +5,6 @@ Remove /boot/ *KernelName
 
 Remake Grub Boot Menu
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+# For EFI boot you might need to
+sudo cp /boot/grub2/grub.cfg /boot/efi/EFI/fedora/grub.cfg
