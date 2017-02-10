@@ -7,8 +7,9 @@
 	[
 		"Vintage"
 	],
-	"tab_size": 8,
-	"translate_tabs_to_spaces": false
+	"tab_size": 8, #For linux is is default
+	"translate_tabs_to_spaces": false,
+	"rulers": [80]
 }
 
 # Packages to download
